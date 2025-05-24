@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto | Digital Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #7c3aed 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .dark\:bg-slate-900 {
+            background-color: #0f172a;
+        }
+        
+        .dark .dark\:text-white {
+            color: #ffffff;
+        }
+        
+        .dark .dark\:bg-slate-800 {
+            background-color: #1e293b;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #0ea5e9;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        .contact-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.5);
+        }
+
+        /* Dark mode specific styles */
+        .dark .dark\:bg-gray-800 {
+            background-color: #1e293b;
+        }
+
+        .dark .dark\:border-slate-700 {
+            border-color: #334155;
+        }
+
+        .dark .dark\:text-gray-300 {
+            color: #d1d5db;
+        }
+
+        .dark .dark\:hover\:bg-slate-700:hover {
+            background-color: #334155;
+        }
+
+        .dark .dark\:hover\:text-primary-400:hover {
+            color: #38bdf8;
+        }
+
+        .dark .dark\:bg-slate-700 {
+            background-color: #334155;
+        }
+
+        .dark .dark\:bg-slate-800 {
+            background-color: #1e293b;
+        }
+
+        .dark .dark\:border-slate-600 {
+            border-color: #475569;
+        }
+
+        .dark .dark\:bg-primary-900 {
+            background-color: #0c4a6e;
+        }
+
+        .dark .dark\:bg-slate-900 {
+            background-color: #0f172a;
+        }
+
+        .dark .dark\:hover\:bg-primary-900:hover {
+            background-color: #0c4a6e;
+        }
+        
+        /* Pricing card styles */
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .popular-plan {
+            border: 2px solid #7c3aed;
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(90deg, #7c3aed 0%, #0ea5e9 100%);
+            color white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Policy page styles */
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .policy-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .policy-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-white transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2 ml-[-10px]"> <!-- Adjusted logo position -->
+                    <span class="text-2xl font-display font-bold gradient-text">IMPACTO</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link active-nav">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="/payment-policy.html" class="nav-link">Payment Policy</a>
+                    
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <a href="#contact" class="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-medium transition-colors">
+                        Get Started
+                    </a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                    <i class="fas fa-bars"></i>
+                    </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link active-nav">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="/payment-policy.html" class="nav-link">Payment Policy</a>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-slate-700">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <a href="#contact" class="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-medium transition-colors">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+                        Elevate Your <span class="gradient-text">Digital Strategy</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+                        Expert digital solutions tailored to amplify your brand's online presence and data-driven decision making.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="px-8 py-3 bg-primary-600 hover:bg-primary-7 00 text-white rounded-full font-medium text-center transition-colors">
+                            Get Started
+                        </a>
+                        <a href="#services" class="px-8 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-800 rounded-full font-medium text-center transition-colors">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Digital Marketing" 
+                             class="rounded-2xl shadow-xl w-full max-w-lg mx-auto">
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary-500 rounded-2xl shadow-xl z-10 flex items-center justify-center animate-float">
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md">
+                                <i class="fas fa-chart-line text-3xl text-secondary-600"></i>
+                                <p class="text-xs font-bold mt-1">Data Insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-600 font-medium">OUR SERVICES</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 mb-4">
+                    Solutions Designed for <span class="gradient-text">Your Growth</span>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+                    We offer specialized services to enhance your digital strategy and data analytics capabilities.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Social Media Card -->
+                <div class="service-card bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 transition-all duration-300 hover:border-primary-500 border border-transparent">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-hashtag text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-3">Social Media Management</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Comprehensive social media solutions to build your brand, engage your audience, and drive conversions.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Content strategy & planning</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Post scheduling & automation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Community engagement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Performance analytics & reporting</span>
+                        </li>
+                    </ul>
+                    <a href="#pricing" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-800 dark:hover:text-primary-400 transition-colors">
+                        View Pricing <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Power BI Card -->
+                <div class="service-card bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 transition-all duration-300 hover:border-primary-500 border border-transparent">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-3">Power BI Services <span class="text-sm bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full ml-2">Coming Soon</span></h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Transform your data into actionable insights with our expert Power BI consulting and development services.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Custom dashboard development</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Data visualization & storytelling</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Data modeling & transformation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Real-time reporting solutions</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-800 dark:hover:text-primary-400 transition-colors">
+                        Get Early Access <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-100 dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-600 font-medium">PRICING PLANS</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 mb-4">
+                    Simple, Transparent <span class="gradient-text">Pricing</span>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+                    Choose the perfect plan for your business needs. All plans include premium support and regular updates.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 transition-all duration-300">
+                    <h3 class="text-xl font-display font-bold mb-2">Basic Plan</h3>
+                    <div class="text-4xl font-bold mb-4">₹1500<span class="text-sm font-normal text-gray-500 dark:text-gray-400">/month</span></div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Perfect for small businesses getting started with social media.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">2 social media accounts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">20 posts per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Basic content strategy</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Monthly performance report</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full block text-center px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 rounded-full font-medium transition-colors">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Standard Plan (Popular) -->
+                <div class="pricing-card bg-white dark:bg-slate-7 00 rounded-2xl shadow-lg p-8 transition-all duration-300 popular-plan">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="text-xl font-display font-bold mb-2">Standard Plan</h3>
+                    <div class="text-4xl font-bold mb-4">₹2000<span class="text-sm font-normal text-gray-500 dark:text-gray-400">/month</span></div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Ideal for growing businesses with multiple social channels.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">3 social media accounts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">30 posts per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Advanced content strategy</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Bi-weekly performance reports</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Valid for 2 months</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full block text-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-medium transition-colors">
+                        Choose Plan
+                    </a>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 transition-all duration-300">
+                    <h3 class="text-xl font-display font-bold mb-2">Pro Plan</h3>
+                    <div class="text-4xl font-bold mb-4">₹3000<span class="text-sm font-normal text-gray-500 dark:text-gray-400">/month</span></div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">For established brands needing comprehensive social management.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">4 social media accounts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">40 posts per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Premium content strategy</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Weekly performance reports</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Community engagement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary-600 mr-2"></i>
+                            <span class="dark:text-gray-300">Valid for 3 months</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full block text-center px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-slate-600 rounded-full font-medium transition-colors">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Need a custom solution for your business?</p>
+                <a href="#contact" class="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-full font-medium transition-colors">
+                    Contact Us <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+                Ready to Transform Your Digital Strategy?
+            </h2>
+            <p class="text-xl max-w-2xl mx-auto mb-8 opacity-90">
+                Let's discuss how we can help you achieve your business goals through powerful digital solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#contact" class="px-8 py-3 bg-white text-primary-600 hover:bg-gray-100 rounded-full font-bold text-center transition-colors">
+                    Get a Free Consultation
+                </a>
+                <a href="tel:+917592067403" class="px-8 py-3 border border-white text-white hover:bg-white/10 rounded-full font-bold text-center transition-colors">
+                    <i class="fas fa-phone mr-2"></i> Call Us: +91 75920 67403
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-primary-600 font-medium">GET IN TOUCH</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 mb-4">
+                        Let's <span class="gradient-text">Work Together</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+                        Have a project in mind or want to learn more about our services? Fill out the form and we'll get back to you within 24 hours.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold dark:text-white">Email Us</h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    <a href="mailto:impactoservicemg@gmail.com" class="hover:text-primary-600 transition-colors">impactoservicemg@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold dark:text-white">Call Us</h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    <a href="tel:+917592067403" class="hover:text-primary-600 transition-colors">+91 75920 67403</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4 dark:text-white">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://instagram.com/impacto._service" target="_blank" class="w-10 h-10 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/impacto-impacto-146764367/" target="_blank" class="w-10 h-10 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com/ImpactoService" target="_blank" class="w-10 h-10 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required class="contact-input w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-slate-800 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="contact-input w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-slate-800 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="contact-input w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-slate-800 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="4" required class="contact-input w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-slate-800 dark:text-white"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-bold transition-colors">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="#" class="flex items-center space-x-2 mb-4">
+                        <span class="text-2xl font-display font-bold gradient-text">IMPACTO</span>
+                    </a>
+                    <p class="mb-4">
+                        Digital solutions to elevate your brand's online presence and data-driven decision making.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/impacto._service" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/impacto-impacto-146764367/" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/ImpactoService" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-display font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-primary-400 transition-colors">Social Media Management</a></li>
+                        <li><a href="#services" class="hover:text-primary-400 transition-colors">Power BI Services</a></li>
+                        <li><a href="#pricing" class="hover:text-primary-400 transition-colors">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-display font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-primary-400 transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-primary-400 transition-colors">Services</a></li>
+                        <li><a href="#pricing" class="hover:text-primary-400 transition-colors">Pricing</a></li>
+                        <li><a href="#contact" class="hover:text-primary-400 transition-colors">Contact</a></li>
+                        <li><a href="/payment-policy.html" class="hover:text-primary-400 transition-colors">Payment Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-display font-bold text-lg mb-4">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary-400 mr-3"></i>
+                            <a href="mailto:impactoservicemg@gmail.com" class="hover:text-primary-400 transition-colors">impactoservicemg@gmail.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-primary-400 mr-3"></i>
+                            <a href="tel:+917592067403" class="hover:text-primary-400 transition-colors">+91 75920 67403</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">
+                    &copy; 2023 Impacto Digital Solutions. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm text-gray-500 hover:text-primary-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-primary-400 transition-colors">Terms of Service</a>
+                    <a href="/payment-policy.html" class="text-sm text-gray-500 hover:text-primary-400 transition-colors">Payment Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="hidden fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gray-800 text-white shadow-lg flex items-center justify-center hover:bg-primary-600 transition-colors z-40">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Payment Policy Page (hidden by default) -->
+    <div id="payment-policy-page" class="hidden fixed inset-0 bg-white dark:bg-slate-900 z-50 overflow-y-auto">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex justify-between items-center mb-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-2xl font-display font-bold gradient-text">IMPACTO</span>
+                </a>
+                <button id="close-policy" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="policy-container">
+                <div class="text-center mb-16">
+                    <span class="text-primary-600 font-medium">OUR POLICY</span>
+                    <h1 class="text-3xl md:text-4xl font-display font-bold mt-2 mb-4">
+                        Payment & Progress <span class="gradient-text">Policy</span>
+                    </h1>
+                    <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+                        Our client-friendly approach ensures you only pay when you see results.
+                    </p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2 class="text-2xl font-display font-bold mb-4 text-primary-600">No Progress, No Payment</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        At Impacto Service, we believe in results-driven work. Our policy ensures that you only pay when you see movement:
+                    </p>
+                    <ul class="policy-list text-gray-600 dark:text-gray-300">
+                        <li>Payment is only required after measurable progress is demonstrated</li>
+                        <li>We provide regular progress reports with clear metrics</li>
+                        <li>Clients approve each phase before any payment is processed</li>
+                        <li>Transparent tracking of all key performance indicators</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2 class="text-2xl font-display font-bold mb-4 text-primary-600">Payment Structure</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Our flexible payment options are designed to align with your business growth:
+                    </p>
+                    <ul class="policy-list text-gray-600 dark:text-gray-300">
+                        <li><strong>Milestone-based payments:</strong> Pay as we achieve agreed-upon objectives</li>
+                        <li><strong>Performance-based pricing:</strong> Fees tied to specific measurable outcomes</li>
+                        <li><strong>Monthly retainers:</strong> For ongoing services with progress checkpoints</li>
+                        <li><strong>Custom payment plans:</strong> Tailored to your cash flow and business cycle</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2 class="text-2xl font-display font-bold mb-4 text-primary-600">Progress Measurement</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        We define and track progress using clear, objective metrics:
+                    </p>
+                    <ul class="policy-list text-gray-600 dark:text-gray-300">
+                        <li>Pre-defined KPIs established during onboarding</li>
+                        <li>Regular reporting intervals (weekly, bi-weekly, or monthly)</li>
+                        <li>Dashboard access to real-time performance data</li>
+                        <li>Quarterly business reviews to assess overall impact</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2 class="text-2xl font-display font-bold mb-4 text-primary-600">Client Protection</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Your satisfaction and financial security are our top priorities:
+                    </p>
+                    <ul class="policy-list text-gray-600 dark:text-gray-300">
+                        <li>30-day money-back guarantee if progress standards aren't met</li>
+                        <li>Contract flexibility to adjust scope based on results</li>
+                        <li>No long-term lock-in contracts</li>
+                        <li>Direct access to account managers for any concerns</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2 class="text-2xl font-display font-bold mb-4 text-primary-600">Getting Started</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Our onboarding process ensures alignment from day one:
+                    </p>
+                    <ul class="policy-list text-gray-600 dark:text-gray-300">
+                        <li>Free initial consultation to assess your needs</li>
+                        <li>Custom proposal with defined success metrics</li>
+                        <li>Progress measurement framework development</li>
+                        <li>Flexible start dates with no upfront payment required</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Have questions about our payment and progress policy? Our team is happy to clarify any details.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-bold transition-colors">
+                        Contact Us Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        
+        function toggleTheme() {
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+        
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Highlight active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                if (pageYOffset >= (sectionTop - headerHeight - 50)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Payment policy page toggle
+        const policyLinks = document.querySelectorAll('a[href="/payment-policy.html"]');
+        const paymentPolicyPage = document.getElementById('payment-policy-page');
+        const closePolicyButton = document.getElementById('close-policy');
+        
+        policyLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                paymentPolicyPage.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closePolicyButton.addEventListener('click', () => {
+            paymentPolicyPage.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
